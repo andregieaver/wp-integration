@@ -1,0 +1,29 @@
+{
+  "name": "wp-agent-bridge-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing a WordPress site's plugin source through the Agent Bridge plugin.",
+  "license": "GPL-2.0-or-later",
+  "type": "module",
+  "bin": {
+    "wp-agent-bridge-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}
