@@ -69,6 +69,6 @@ namespace AgentBridge {
 
 	define( 'AgentBridge\\FILE', \ABSPATH . 'wp-content/plugins/wp-agent-bridge/wp-agent-bridge.php' );
 
-	require_once __DIR__ . '/../plugin/wp-agent-bridge/includes/class-paths.php';
-	require_once __DIR__ . '/../plugin/wp-agent-bridge/includes/class-lint.php';
+	require_once __DIR__ . '/../wp-agent-bridge/includes/class-paths.php';
+	require_once __DIR__ . '/../wp-agent-bridge/includes/class-lint.php';
 }

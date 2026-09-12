@@ -2,7 +2,7 @@
 
 Two pieces that let an AI coding agent develop WordPress plugins on a live site:
 
-- **`plugin/wp-agent-bridge`** — a WordPress plugin exposing a guarded REST API
+- **`wp-agent-bridge`** — a WordPress plugin exposing a guarded REST API
   over the source of plugins you nominate.
 - **`mcp-server`** — an MCP server that wraps that API, so the agent sees it as
   a set of tools rather than as HTTP.
@@ -35,12 +35,34 @@ layer is reachable from the internet.
 TLS is required. The bridge refuses plain HTTP unless the site is a local
 environment, because the secret is worthless once it crosses the wire in clear.
 
+## Layout
+
+```
+wp-agent-bridge/     the WordPress plugin — this folder, and only this folder,
+                     is what goes into wp-content/plugins/
+mcp-server/          the MCP server (Node, stdio) — stays on your machine
+tests/               path-confinement and linter tests
+docs/api.md          REST reference
+```
+
 ## Setup
 
 ### 1. Install the plugin
 
-Copy `plugin/wp-agent-bridge/` into `wp-content/plugins/` on the site and
-activate it. Then:
+Either upload it through wp-admin:
+
+```bash
+./build-plugin-zip.sh     # produces wp-agent-bridge.zip
+```
+
+then **Plugins → Add New → Upload Plugin** and pick that zip. WordPress unpacks
+it to `wp-content/plugins/wp-agent-bridge/` itself.
+
+Or copy the folder up by hand over SFTP: the thing that lands in
+`wp-content/plugins/` is the `wp-agent-bridge` folder alone — not the repo, and
+not any path above it.
+
+Activate it, then:
 
 1. **Tools → Agent Bridge → Generate secret.** Copy it; it is shown once and
    only its hash is stored.

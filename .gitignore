@@ -4,3 +4,4 @@ tests/fixtures/
 *.log
 .env
 .DS_Store
+wp-agent-bridge.zip
